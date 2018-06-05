@@ -1,0 +1,32 @@
+#!/bin/sh
+scantime=`date '+%Y.%m.%d__%H.%M.%S'`
+scanpath="/var/log/clamscanz/$scantime"
+echo "" > /dev/pts/0
+echo "Vetting Lab Raspberry Pi USB Scanner Starting" > /dev/pts/0
+echo "Scanning Flash Drive --- Do not remove" > /dev/pts/0
+echo "This may take a few moments" > /dev/pts/0
+echo "Drive will be unmounted upon scan completion" > /dev/pts/0
+echo "Review output scan progress for infected file notification" > /dev/pts/0
+echo "Infected Files will be automatically deleted" > /dev/pts/0
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" > /dev/pts/0
+echo "-----------------------------------------------" > /dev/pts/0
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" > /dev/pts/0
+echo "-----------------------------------------------" > /dev/pts/0
+/usr/bin/clamscan --infected --remove=yes --bytecode=yes /media/usb | tee -a "$scanpath"
+echo "" > /dev/pts/0
+cat "$scanpath" > /dev/pts/0
+echo "" > /dev/pts/0
+echo "Please wait while the scan completes and the drive is unmounted" > /dev/pts/0
+sleep 5
+/usr/bin/pumount /media/usb0
+/etc/init.d/udev-mtab restart
+echo "---------------Scan Completed------------------" > /dev/pts/0
+echo "~~~~~~~~~~~Please Remove Flash Drive~~~~~~~~~~~" > /dev/pts/0
+echo "-----------------------------------------------" > /dev/pts/0
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" > /dev/pts/0
+
+
+
+
+
+
