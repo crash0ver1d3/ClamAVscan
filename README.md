@@ -1,5 +1,5 @@
 # ClamAVscanSetup
-Tool utilizing ClamAV, to perform AV scan on USB drive once mounted to raspberry Pi (or RHEL device)
+Tool utilizing open source anti-virus, ClamAV, to perform AV scan on USB drive once mounted to Raspberry Pi or Linux OS  
 Document for setting up raspberry Pi USB scanner:
 The follow are pre-requisites for the scan script to run properly.
 Raspbian OS
